@@ -1,21 +1,73 @@
-class india():
-    def capital(self):
-        print("New Delhi is the capital of India")
-    def language(self):
-        print("Hindi is the most widely spoken language of India")
-    def type(self):
-        print("India is a developing country")
-class usa():
-    def capital(self):
-        print("Washington, D.C. is the capital of USA")
-    def language(self):
-        print("English is the most widely spoken language of USA")
-    def type(self):
-        print("USA is a developed country")
-obj_ind = india()
-obj_usa = usa()
-for country in (obj_ind,obj_usa):
-    country.capital()
-    country.language()
-    country.type()
-    
+# Smart Device Command Center
+ 
+# PART 1: Import tools for abstraction
+from abc import ABC, abstractmethod
+ 
+# PART 2: Create an abstract class
+class SmartDevice(ABC):
+ 
+    # Common method
+    def show_device(self, name):
+        print("Device Name:", name)
+ 
+    # Abstract method
+    @abstractmethod
+    def turn_on(self):
+        pass
+ 
+ 
+# PART 3: Create subclasses that override the abstract method
+class SmartLight(SmartDevice):
+    def turn_on(self):
+        print("Smart Light is now ON")
+ 
+ 
+class SmartFan(SmartDevice):
+    def turn_on(self):
+        print("Smart Fan is now ON")
+ 
+ 
+class SmartSpeaker(SmartDevice):
+    def turn_on(self):
+        print("Smart Speaker is now ON")
+ 
+ 
+# PART 4: Create objects and call their methods
+light = SmartLight()
+fan = SmartFan()
+speaker = SmartSpeaker()
+ 
+light.show_device("Living Room Light")
+light.turn_on()
+ 
+fan.show_device("Bedroom Fan")
+fan.turn_on()
+ 
+speaker.show_device("Music Speaker")
+speaker.turn_on()
+ 
+ 
+# PART 5: Polymorphism without inheritance
+# These classes do not inherit from SmartDevice,
+# but they share the same method name.
+ 
+class SecurityCamera:
+    def check_status(self):
+        print("Security Camera is recording")
+ 
+ 
+class DoorLock:
+    def check_status(self):
+        print("Door Lock is secure")
+ 
+ 
+# PART 6: Use the shared method name
+devices = [SecurityCamera(), DoorLock()]
+ 
+print("")
+print("===== SMART DEVICE STATUS =====")
+ 
+for device in devices:
+    device.check_status()
+ 
+print("===============================")
